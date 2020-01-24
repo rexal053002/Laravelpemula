@@ -136,7 +136,7 @@ Route::get('testmodel2',function()
 // akses model (mencari model berdasarkan title)
 Route::get('testmodel3',function()
 {
-    $query = App\Post::where('title','like','%Jodoh%')->get();
+    $query = App\Post::where('title','like','%cepat nikah%')->get();
     return $query;
 });
 
@@ -167,3 +167,19 @@ Route::get('testmodel6',function()
     return $post;
     // check record baru di database
 });
+
+//Akses latihan migration & model
+//take get 3 data
+Route::get('testoko',function()
+{
+    $query = App\Post::all()->take(3);
+    return $query;
+});
+
+//
+Route::get('testoko2',function()
+{
+    $query = App\toko::select('nama','nama_barang','jenis_barang')->first();
+    return $query;
+});
+
