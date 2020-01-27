@@ -183,3 +183,21 @@ Route::get('testoko2',function()
     return $query;
 });
 
+//tamba & hapus data latihan
+Route::get('data-elektronik/select', function ()
+{
+    $data = App\Elektronik::select('nama_pembeli','membeli_barang','merk_barang')->first();
+    return $data;
+});
+Route::get('data-elektronik/{nama_pembeli}/{membeli_barang}/{merk_barang}/{harga_barang}/{alamat_pembeli}/{tgl_pembelian}', function($nama_pembeli,$membeli_barang,$merk_barang,$harga_barang,$alamat_pembeli,$tgl_pembelian) {
+    $post = new App\Elektronik;
+    $post->nama_pembeli = $nama;
+    $post->membeli_barang = $membeli_barang;
+    $post->merk_barang = $merk_barang;
+    $post->harga_barang = $harga_barang;
+    $post->alamat_pembeli = $alamat_pembeli;
+    $post->tgl_pembelian = $tgl_pembelian;
+    $post->save();
+    return $post;
+// check record baru di database
+    });
