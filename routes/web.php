@@ -186,7 +186,7 @@ Route::get('testoko2',function()
 //tamba & hapus data latihan
 Route::get('data-elektronik/select', function ()
 {
-    $data = App\Elektronik::select('nama_pembeli','membeli_barang','merk_barang')->first();
+    $data = App\Elektronik::select('nama','nama_barang','')->first();
     return $data;
 });
 Route::get('data-elektronik/{nama_pembeli}/{membeli_barang}/{merk_barang}/{harga_barang}/{alamat_pembeli}/{tgl_pembelian}', function($nama_pembeli,$membeli_barang,$merk_barang,$harga_barang,$alamat_pembeli,$tgl_pembelian) {
@@ -201,3 +201,27 @@ Route::get('data-elektronik/{nama_pembeli}/{membeli_barang}/{merk_barang}/{harga
     return $post;
 // check record baru di database
     });
+
+//
+Route::get('/', function()
+{
+    return view('Welcome');
+});
+
+//belajar Controller
+Route::get('latihan','latihanController@halo');
+
+//latihan Controller
+//tambah
+//Route::get('tambah','latihanController@tambah');
+//kurang
+Route::get('kurang','latihanController@kurang');
+//bagi
+Route::get('bagi','latihanController@bagi');
+//kali
+Route::get('kali','latihanController@kali');
+//memakai dgn validasi
+Route::get('tambah','latihanController@tambah');
+
+//Array Controller
+Route::get('data-1','latihanController@loop');
