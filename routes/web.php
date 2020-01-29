@@ -203,10 +203,10 @@ Route::get('data-elektronik/{nama_pembeli}/{membeli_barang}/{merk_barang}/{harga
     });
 
 //
-Route::get('/', function()
-{
-    return view('Welcome');
-});
+//Route::get('/', function()
+//{
+//    return view('Welcome');
+//});
 
 //belajar Controller
 Route::get('latihan','latihanController@halo');
@@ -224,4 +224,37 @@ Route::get('kali','latihanController@kali');
 Route::get('tambah','latihanController@tambah');
 
 //Array Controller
-Route::get('data-1','latihanController@loop');
+Route::get('loop2','latihanController@loop2');
+
+//
+Route::get('loop3','latihanController@loop3');
+
+//CRUD TABUNGAN
+Route::get('tabungan','TabunganController@index');
+
+//CRUD TABUNGAN SHOW
+Route::get('tabungan/{id}','TabunganController@show');
+
+//CRUD TABUNGAN CREATE
+Route::get('tabungan-create/{nis}/{nama}/{kelas}/{jml}','TabunganController@store');
+
+//CRUD TABUNGAN UPDATE/EDIT
+Route::get('tabungan-edit/{id?}/{nis?}/{nama?}/{kelas?}/{jml?}','TabunganController@edit');
+
+//CRUD TABUNGAN DELETE
+
+
+
+//CRUD TABUNGAN
+Route::get('customers','TabunganController@index');
+
+//CRUD TABUNGAN SHOW
+Route::get('customers/{id}','TabunganController@show');
+
+//CRUD TABUNGAN CREATE
+Route::get('customers-create/{id}/{code_customers}/{name}/{}','TabunganController@store');
+
+//CRUD TABUNGAN UPDATE/EDIT
+Route::get('customers-edit/{id?}/{nis?}/{nama?}/{kelas?}/{jml?}','TabunganController@edit');
+
+//CRUD TABUNGAN DELETE

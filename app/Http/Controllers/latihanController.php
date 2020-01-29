@@ -33,47 +33,99 @@ class latihanController extends Controller
     }
 
 //latihan array Controller
-    public function loop()
-    {
-        $data = [
-            ['nama'=>'Riz','kelas'=>'XIRPL1','uang_Jajan'=>'30000'],
-            ['nama'=>'Sera','kelas'=>'XIRPL2','uang_Jajan'=>'40000'],
-            ['nama'=>'Isac','kelas'=>'XIRPL3','uang_Jajan'=>'60000'],
-            ['nama'=>'Pika','kelas'=>'XIRPL1','uang_Jajan'=>'25000'],
-        ];
-        //dd($data)
-        foreach($data as $val =>$key)
-        {
-            $v = $key['uang_jajan'];
-            $disc = 0;
-            $str = "Nama : ".$value['nama'], "<br>Kelas : ".$value['kelas'], "<br>Uang Jajan : ".$value['uang_jajan'];
-            if($v >= 50000) {
-                $str = "<br>Tabungan sebesar 25%<br>";
-                $disc = 0.4;
-            } else if($v >= 25000) {
-                $str = "<br>Tabungan sebesar 15%<br>";
-                $disc = 0.15;
-            } else if($v >= 10000) {
-                $str = "<br>Tabungan sebesar 10%%<br>";
-                $disc = 0.1;
-        }
+public function loop2()
+{
+    $data =[['nama' =>'Vika','kelas'=>'RPL 1', 'uangjajan'=>10000],
+            ['nama' =>'Memet','kelas'=>'RPL 2', 'uangjajan'=>50000],
+            ['nama' =>'Restu','kelas'=>'RPL 3', 'uangjajan'=>30000],
+            ['nama' =>'David','kelas'=>'RPL 4', 'uangjajan'=>15000],
+            ['nama' =>'Riz','kelas'=>'RPL 5', 'uangjajan'=>5000]
+            ];
 
+    foreach ($data as $val => $key) {
+        if ($key['uangjajan']>=50000) {
+            $ta=$key['uangjajan']*25/100;
+            $total=$key['uangjajan']-$ta;
+        }
+        elseif ($key['uangjajan']>=25000) {
+            $ta=$key['uangjajan']*15/100;
+            $total=$key['uangjajan']-$ta;
+        }
+        elseif ($key['uangjajan']>=10000) {
+            $ta=$key['uangjajan']*10/100;
+            $total=$key['uangjajan']-$ta;
+        }else {
+            $ta=0;
+            $total=$key['uangjajan'];
+        }
+        echo "Nama : ".$key['nama'].
+        "<br>Kelas : ".$key['kelas'].
+        "<br>Uang Jajan : ".$total.
+        "<br>Uang Tabungan : ".$ta.
+        "<br>Total Uang Jajan  : ".$key['uangjajan'].
+        "<hr>";
     }
 }
-
-//latihan 2 Controller loop
-    public function loop2()
+//latihan 3 Controller loop
+    public function loop3()
     {
         $data = [
-            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'Bandung','jk'=>'L','jabatan'=>'Manager','jam_kerja'=>'220'],
-            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'Jakarta','jk'=>'L','jabatan'=>'Sekretaris','jam_kerja'=>'200'],
-            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'Bali','jk'=>'L','jabatan'=>'Staff','jam_kerja'=>'150'],
+            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'bandung','jk'=>'L','jabatan'=>'manager','jam_kerja'=>220],
+            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'jakarta','jk'=>'L','jabatan'=>'sekretaris','jam_kerja'=>200],
+            ['Nama'=>'Riz','agama'=>'Islam','alamat'=>'bali','jk'=>'L','jabatan'=>'staff','jam_kerja'=>150],
         ];
         foreach($data as $val => $key)
         {
-            $v = $key['jam_kerja'];
-            $disc = 0;
-            $str = "Nama : ".$value['nama'], "<br>Agama : ".$value['agama'], "<br>Alamat : ".$value['alamat'],
-            "<br>Jabatan : ".$value['jabatan'], "<br>Jam Kerja : ".$value['jam_kerja'];
+            if($key['jabatan']=='manager') {
+                $gaji = 5000000;
+                if($key['jam_kerja'] >= 200){
+                    $bonus = $gaji/10;
+                }
+                else if($key['jam_kerja'] >= 200) {
+                    $bonus = $gaji*5/100;
+                } else {
+                    $bonus = 0;
+                }
+                $gaji_bersih = $gaji+$bonus;
+                $potongan=$gaji_bersih*2.5/100;
+                $gt = $gaji_bersih-$potongan;
+
+            } else if($value['jam_kerja']==sekretaris){
+                $gaji = 3500000;
+                if($value['jam_kerja'] >=250){
+                    $bonus=$gaji/10;
+                } else if($value['jam_kerja'] >= 200){
+                    $bonus = $gaji*5/100;
+                } else {
+                    $bonus=$gaji*5/100;
+                }
+                $gaji_bersih = $gaji+$bonus;
+                $potongan = $gaji_bersih*2.5/100;
+                $gt = $gaji_bersih-$potongan;
+            }
+            else if($value['jabatan']=='staff'){
+                $gaji=2500000;
+            }
+            if($value['jam_kerja']>= 250){
+                $bonus = $gaji/10;
+            } else if($value['jam_kerja'] >= 200){
+                $bonus=$gaji*5/100;
+            } else {
+                $bonus= 0;
+            }
+            $gaji_bersih = $gaji+$bonus;
+            $potongan=$gaji_bersih*2.5/100;
+            $gt=$gaji_bersih-$potongan;
         }
+        echo "Nama : ".$value['nama'].
+        "<br>Agama : ".$value['agama'].
+        "<br>Alamat : ".$value['alamt'].
+        "<br>Jenis Kelamin : ".$value['jk'].
+        "<br>Jabatan : ".$value['jabatan'].
+        "<br>Gaji : ".$value['jam_kerja'].
+        "<br>Bonus : ".$gaji.
+        "<br>Potongan : ".$potongan.
+        "<br>Gaji Total : "." Rp . ".$gt.
+        "<hr>";
     }
+}
